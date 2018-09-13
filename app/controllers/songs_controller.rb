@@ -25,7 +25,7 @@ require 'csv'
   def upload
     CSV.foreach(params[:file].path, headers: true) do |song|
     @song =  Song.new(title: song[0])
-    @artist = Artist.new(name: song[1])
+    @artist = Artist.find_or_create_by(name: song[1])
     @song.artist = @artist
     @song.save
     @artist.save
