@@ -24,7 +24,11 @@ require 'csv'
 
   def upload
     CSV.foreach(params[:songs].path, headers: true) do |song|
-    Song.create(title: song[0], artist_id: Artist.create(name: song[1]).id))
+    @song =  Song.new(title: song[0])
+    @artist = Artist.new(name: song[1])
+    @song.artist = @artist 
+    @song.save 
+    @artist.save   
   end
     redirect_to songs_path
   end
