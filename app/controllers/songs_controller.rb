@@ -23,7 +23,7 @@ require 'csv'
   end
 
   def upload
-    CSV.foreach("db/songs.csv", headers: true) do |song|
+    CSV.foreach(params[:file].path, headers: true) do |song|
     @song =  Song.new(title: song[0])
     @artist = Artist.new(name: song[1])
     @song.artist = @artist
