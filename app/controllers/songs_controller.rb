@@ -26,9 +26,9 @@ require 'csv'
     CSV.foreach(params[:songs].path, headers: true) do |song|
     @song =  Song.new(title: song[0])
     @artist = Artist.new(name: song[1])
-    @song.artist = @artist 
-    @song.save 
-    @artist.save   
+    @song.artist = @artist
+    @song.save
+    @artist.save
   end
     redirect_to songs_path
   end
