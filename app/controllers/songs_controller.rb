@@ -23,6 +23,7 @@ class SongsController < ApplicationController
   end
 
   def upload
+    redirect_to songs_path
   end
 
   def edit
